@@ -194,7 +194,7 @@ section { padding: 30px 0 54px; }
 .section-heading h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); font-weight: 600; letter-spacing: -1px; }
 .section-heading p { color: var(--muted); font-size: .88rem; }
 
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
 
 .card {
   position: relative;
@@ -271,6 +271,37 @@ section { padding: 30px 0 54px; }
 .card-links a:hover { text-decoration: underline; text-underline-offset: 3px; }
 .card-links a + a { color: var(--muted); }
 .card-links a + a:hover { color: var(--text); }
+
+.install { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
+.install summary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  color: var(--accent-soft);
+  font-size: .82rem;
+  font-weight: 500;
+  list-style: none;
+}
+.install summary::-webkit-details-marker { display: none; }
+.install summary::after {
+  content: "›";
+  margin-left: auto;
+  font-size: 1rem;
+  line-height: 1;
+  transition: transform .25s ease;
+}
+.install[open] summary::after { transform: rotate(90deg); }
+.install ol { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); font-size: .82rem; line-height: 1.55; }
+.install li::marker { color: var(--accent-soft); }
+.install code {
+  padding: 1px 5px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .06);
+  color: #e7d9cf;
+  font-size: .8em;
+}
+.install b { color: #d9cdc5; font-weight: 500; }
 
 .socials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
