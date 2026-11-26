@@ -194,7 +194,7 @@ section { padding: 30px 0 54px; }
 .section-heading h2 { font-size: clamp(1.5rem, 3.6vw, 2rem); font-weight: 600; letter-spacing: -1px; }
 .section-heading p { color: var(--muted); font-size: .88rem; }
 
-.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); align-items: start; gap: 16px; }
+.grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 
 .card {
   position: relative;
@@ -272,36 +272,58 @@ section { padding: 30px 0 54px; }
 .card-links a + a { color: var(--muted); }
 .card-links a + a:hover { color: var(--text); }
 
-.install { margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--line); }
-.install summary {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  color: var(--accent-soft);
-  font-size: .82rem;
+.install-btn {
+  padding: 0;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: .84rem;
   font-weight: 500;
-  list-style: none;
+  color: var(--muted);
+  cursor: pointer;
 }
-.install summary::-webkit-details-marker { display: none; }
-.install summary::after {
-  content: "›";
-  margin-left: auto;
-  font-size: 1rem;
-  line-height: 1;
-  transition: transform .25s ease;
+.install-btn:hover { color: var(--text); text-decoration: underline; text-underline-offset: 3px; }
+
+.install-pop {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  height: fit-content;
+  max-height: calc(100vh - 32px);
+  overflow: auto;
+  width: min(430px, calc(100vw - 32px));
+  padding: 24px;
+  border: 1px solid rgba(255, 190, 140, .32);
+  border-radius: 16px;
+  background: var(--surface-2);
+  color: var(--text);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, .65);
 }
-.install[open] summary::after { transform: rotate(90deg); }
-.install ol { margin: 12px 0 0; padding-left: 18px; display: grid; gap: 8px; color: var(--muted); font-size: .82rem; line-height: 1.55; }
-.install li::marker { color: var(--accent-soft); }
-.install code {
+.install-pop::backdrop { background: rgba(6, 4, 4, .62); backdrop-filter: blur(3px); }
+.install-pop h4 { font-size: 1rem; font-weight: 600; letter-spacing: -.2px; margin-bottom: 14px; }
+.install-pop ol { margin: 0; padding-left: 18px; display: grid; gap: 10px; color: var(--muted); font-size: .84rem; line-height: 1.55; }
+.install-pop li::marker { color: var(--accent-soft); }
+.install-pop code {
   padding: 1px 5px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, .06);
+  background: rgba(255, 255, 255, .07);
   color: #e7d9cf;
-  font-size: .8em;
+  font-size: .9em;
 }
-.install b { color: #d9cdc5; font-weight: 500; }
+.install-pop b { color: #d9cdc5; font-weight: 500; }
+.install-close {
+  margin-top: 18px;
+  padding: 7px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: none;
+  font-family: inherit;
+  font-size: .8rem;
+  font-weight: 500;
+  color: var(--muted);
+  cursor: pointer;
+}
+.install-close:hover { color: var(--text); border-color: var(--line-strong); }
 
 .socials { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 

@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=6">
+<link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 <header>
@@ -85,16 +85,18 @@
         <div class="card-links">
           <a href="./Silo-3.4.0.zip" download="Silo-3.4.0.zip">Download ZIP</a>
           <a href="https://github.com/rajjiitt/Silo" target="_blank" rel="noopener">GitHub</a>
+          <button type="button" class="install-btn" popovertarget="silo-install">How to install</button>
         </div>
-        <details class="install">
-          <summary>How to install Silo</summary>
+        <div class="install-pop" id="silo-install" popover>
+          <h4>How to install Silo</h4>
           <ol>
             <li>Download the ZIP and extract it — you'll get a folder containing <code>manifest.json</code>.</li>
             <li>Open <code>chrome://extensions</code> and switch on <b>Developer mode</b> (top right).</li>
             <li>Click <b>Load unpacked</b> and select that extracted folder.</li>
             <li>Pin Silo from the puzzle-piece menu, then start a focus session.</li>
           </ol>
-        </details>
+          <button type="button" class="install-close" popovertarget="silo-install" popovertargetaction="hide">Close</button>
+        </div>
       </article>
 
       <article class="card">
