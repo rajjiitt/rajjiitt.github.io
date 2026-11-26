@@ -54,35 +54,12 @@ nav { display: flex; align-items: center; justify-content: space-between; gap: 2
   gap: 48px;
 }
 
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 9px;
-  padding: 6px 13px;
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, .025);
-  color: var(--accent-soft);
-  font-size: .78rem;
-  font-weight: 500;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-}
-
-.dot {
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: var(--gradient);
-  box-shadow: 0 0 10px rgba(255, 160, 110, .8);
-}
-
 h1 {
   font-size: clamp(2.4rem, 6.4vw, 4.3rem);
   font-weight: 600;
   line-height: 1.12;
   letter-spacing: -2px;
-  margin: 22px 0 18px;
+  margin: 0 0 18px;
 }
 
 .gradient {
@@ -128,6 +105,7 @@ h1 {
   border-radius: 20px;
   background: var(--surface);
   text-align: center;
+  transition: transform .35s ease, border-color .35s ease, box-shadow .35s ease;
 }
 .profile-card::before {
   content: "";
@@ -136,6 +114,28 @@ h1 {
   height: 1px;
   background: linear-gradient(90deg, transparent, rgba(255, 180, 120, .55), transparent);
 }
+.profile-card::after {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: conic-gradient(from 0deg, transparent 0deg, rgba(255, 180, 120, .16) 70deg, transparent 150deg, rgba(244, 91, 139, .14) 240deg, transparent 320deg);
+  opacity: 0;
+  transition: opacity .45s ease;
+  animation: card-glow 7s linear infinite;
+  pointer-events: none;
+}
+.profile-card > * { position: relative; z-index: 1; }
+.profile-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 190, 140, .35);
+  box-shadow: 0 28px 60px -30px rgba(255, 130, 95, .55);
+}
+.profile-card:hover::after { opacity: 1; }
+
+@keyframes card-glow {
+  to { transform: rotate(360deg); }
+}
+
 .profile-card h2 { font-size: 1.16rem; font-weight: 600; letter-spacing: -.2px; }
 
 .avatar-ring {
@@ -145,6 +145,11 @@ h1 {
   padding: 2px;
   border-radius: 50%;
   background: var(--gradient);
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+.profile-card:hover .avatar-ring {
+  transform: scale(1.05);
+  box-shadow: 0 0 26px -4px rgba(255, 150, 100, .55);
 }
 .avatar {
   width: 100%;
@@ -157,7 +162,9 @@ h1 {
   font-weight: 600;
   letter-spacing: -1px;
   color: var(--text);
+  overflow: hidden;
 }
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 .handle { color: var(--muted); font-size: .87rem; }
 
@@ -345,5 +352,5 @@ a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-soft); o
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; scroll-behavior: auto !important; }
+  * { transition: none !important; scroll-behavior: auto !important; animation: none !important; }
 }
